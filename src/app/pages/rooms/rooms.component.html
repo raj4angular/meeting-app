@@ -1,0 +1,115 @@
+<div class="row">
+    <div class="col-7">
+        <div class="card">
+            <div class="card-header bg-success">
+              
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>S#</th>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>Building</th>
+                            <th>Floor</th>
+                            <th>Capacity</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let room of roomsArray; let sr=index">
+                            <td> {{sr +1}}  </td>
+                            <td>{{room.roomName}}</td>
+                            <td>{{room.roomLocationName}}</td>
+                          <!--  <td> {{getLocationNameById(room.roomLocationId)}}   </td>-->
+                            <td>{{room.roomBuildingName}}</td>
+                            <td>{{room.roomFloor}}</td>
+                            <td>{{room.roomSeatingCapacity}}</td>
+                            <td>{{room.roomDescription}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-5">
+        <div class="card">
+            <div class="card-header bg-success">
+                Create New
+            </div>
+            <div class="card body">
+                <form>
+                    <div class="row">
+                        <div class="col-6">
+                            <label>Location</label>
+                            <!--<input type="text" class="form-control" name="roomLocationId" [(ngModel)]="roomObj.roomLocationId" placeholder="Enter"> -->
+                            <select  [(ngModel)]="locationId" id="" name="roomLocationId" (change)="loadBuildingsByLocation()">
+                                <option value="0">Select Location</option>
+                                <option value="" *ngFor="let location of locationArray" [value]="location.id">{{location.locationName}}</option>
+                              </select>
+                        </div>
+                        <div class="col-6">
+                            <label>Building</label>
+                            <!--<input type="text" class="form-control" name="roomLocationId" [(ngModel)]="roomObj.roomLocationId" placeholder="Enter"> -->
+                            <select  [(ngModel)]="buildingId" id="" name="roomBuildingId">
+                                <option value="0">Select Building</option>
+                                <option value="" *ngFor="let building of buildingArray" [value]="building.id">{{building.buildingName}}</option>
+                              </select>
+                        </div>
+                        <div class="col-6">
+                            <label>Floor</label>
+                            <!--<input type="text" class="form-control" name="roomLocationId" [(ngModel)]="roomObj.roomLocationId" placeholder="Enter"> -->
+                            <select  [(ngModel)]="floor" id="" name="floor">
+                                <option value="0">Select Floor</option>
+                                <option value="" *ngFor="let floor of floorArray" [value]="floor.id">{{floor.floor}}</option>
+                              </select>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label>Name</label>
+                            <input type="text" class="form-control" name="roomName" [(ngModel)]="roomObj.roomName" placeholder="Enter">
+                        </div>
+                        <!--<div class="col-6">
+                            <label>Location</label>
+                            input type="text" class="form-control" name="roomLocationId" [(ngModel)]="roomObj.roomLocationId" placeholder="Enter"> 
+                            <select  [(ngModel)]="roomObj.roomLocationId" id="" name="roomLocationId">
+                                <option value="" *ngFor="let location of locationArray" [value]="location.id">{{location.locationName}}</option>
+                              </select>
+                        </div>
+                        <div class="col-6">
+                            <label >Building</label>
+                            <input type="text" class="form-control" name="roomBuildingId" [(ngModel)]="roomObj.roomBuildingId" placeholder="Enter">
+                        </div>
+                        <div class="col-6">
+                            <label >Floor</label>
+                            <input type="text" class="form-control" name="Floor" [(ngModel)]="roomObj.roomFloor" placeholder="Enter">
+                        </div>-->
+                        <div class="col-6">
+                            <label >Capacity</label>
+                            <input type="text" class="form-control" name="Capacity" [(ngModel)]="roomObj.roomSeatingCapacity" placeholder="Enter">
+                        </div>
+                        <div class="col-6">
+                            <label>Description</label>
+                            <input type="text" class="form-control" name="Description" [(ngModel)]="roomObj.roomDescription" placeholder="Enter">
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-6">
+                            <button class="btn btn-sm btn-secondary">Reset</button>
+                        </div>
+                        <div class="col-6">
+                            <button class="btn btn-sm btn-primary" (click)="addRoom()">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+       
+    </div>
+</div>
